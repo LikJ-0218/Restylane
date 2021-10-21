@@ -4,6 +4,6 @@ var manifest = [
 'img/bg-top.png',  
 'img/bg.png',  
 'img/down-balloon.png',  
-
-
+'img/home.png',  
+'img/logo.png',  
 ];  
