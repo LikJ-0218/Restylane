@@ -337,13 +337,13 @@ html {
       }
 
       .up-img {
+        position: absolute;
         width: 495px;
         height: 785px;
         top: 3px;
         left: 3px;
-        // overflow: hidden;
+        overflow: hidden;
         display: none;
-
         &.active1 {
           display: block
         }
@@ -356,7 +356,7 @@ html {
           margin: auto;
           width: 100%;
           pointer-events: auto;
-          z-index: 0 !important;
+          // z-index: 0 !important;
         }
 
         .up-wenzi1 {
@@ -495,6 +495,8 @@ html {
       .center(0);
 
       .up-kuang {
+        width: 100%;
+        height: 100%;
         left: 0;
         top: 0;
 
@@ -548,10 +550,11 @@ html {
   .save {
     width: 100%;
     height: 100%;
-    position: relative;
     top: 0;
     left: 0;
     opacity: 0;
+    pointer-events: auto;
+
 
     >canvas {
       position: absolute;
@@ -792,10 +795,12 @@ html {
       top: 490px;
       right: 22px;
     }
+
     .label3 {
       top: 840px;
       left: 40px;
     }
+
     .label4 {
       top: 760px;
       right: 22px;
@@ -816,7 +821,8 @@ html {
         }
       }
     }
-    .label-hint{
+
+    .label-hint {
       width: 100%;
       position: absolute;
       top: 1099px;
@@ -825,6 +831,7 @@ html {
       font-size: 20px;
       color: #6f6f6f;
     }
+
     .label-btn {
       width: 248px;
       height: 86px;
@@ -949,10 +956,11 @@ html {
 
 }
 
-.up-kuangb {
-  animation: backInDown 1s ease both;
+// .up-kuangb {
 
-}
+//   animation: backInDown 1s ease both;
+
+// }
 
 .shear-kuang {
   opacity: 0;

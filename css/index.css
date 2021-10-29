@@ -275,10 +275,12 @@ html {
   top: 0;
 }
 .uploading .up-cont .up-kuangb .up-img {
+  position: absolute;
   width: 495px;
   height: 785px;
   top: 3px;
   left: 3px;
+  overflow: hidden;
   display: none;
 }
 .uploading .up-cont .up-kuangb .up-img.active1 {
@@ -292,7 +294,6 @@ html {
   margin: auto;
   width: 100%;
   pointer-events: auto;
-  z-index: 0 !important;
 }
 .uploading .up-cont .up-kuangb .up-img .up-wenzi1 {
   top: 39px;
@@ -409,6 +410,8 @@ html {
   transform: translateX(-50%);
 }
 .share .shear-cont .shear-kuang .up-kuang {
+  width: 100%;
+  height: 100%;
   left: 0;
   top: 0;
 }
@@ -450,10 +453,10 @@ html {
 .share .save {
   width: 100%;
   height: 100%;
-  position: relative;
   top: 0;
   left: 0;
   opacity: 0;
+  pointer-events: auto;
 }
 .share .save > canvas {
   position: absolute;
@@ -767,9 +770,6 @@ html {
 }
 .btn-anima {
   animation: fadeInUp 1s linear both;
-}
-.up-kuangb {
-  animation: backInDown 1s ease both;
 }
 .shear-kuang {
   opacity: 0;

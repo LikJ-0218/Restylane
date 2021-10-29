@@ -172,7 +172,6 @@ $(function () {
     // 监听文件上传 上传成功之后显示到页面中
     $('#file').change(function () {
         var files = $(this)[0].files
-
         // 获取文件上传到数据库
         var fd = new FormData()
         fd.append('avatar', files[0])
@@ -184,15 +183,41 @@ $(function () {
         xhr.send(fd)
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.responseText);
                 var res = JSON.parse(xhr.responseText)
                 if (res.status == 200) {
-                    console.log();
-                    $('.upimg').prop('src', 'http://www.liulongbin.top:3006' + res.url)
+                    console.log(res);
+                    getBase64('http://www.liulongbin.top:3006' + res.url,$('.upimg'));
+                   
                 }
             }
         }
 
     })
+    // 图片拖拽
+    // JS原生获得手机端手机触摸点坐标并移动图片 方法一
+    window.onload=function(){
+        var img_move=document.getElementsByClassName('upimg')[0];//获得元素DOM
+        var Xstart=0,Ystart=0,Xmove=0,Ymove=0,top=0,left=0;    //定义变量
+        img_move.ontouchstart=function(e){
+            var e=e||window.event;
+            Xstart=e.touches[0].clientX;//获得触屏点横坐标
+            Ystart=e.touches[0].clientY;//获得触屏点纵坐标
+            //alert(e.touches.length) 获得当前屏幕上所有手指列表
+        }
+     img_move.ontouchmove=function(e){
+         var e=e||window.event;
+         event.preventDefault();//阻止页面滑动
+         Xmove=e.changedTouches[0].clientX;//获得滑动时的触点横坐标
+         Ymove=e.changedTouches[0].clientY;//获得滑动时的触点纵坐标
+         img_move.style.top=top+Ymove-Ystart+"px";//对图片的下一次滑动操作时的定位
+         img_move.style.left=left+Xmove-Xstart+"px";
+     }
+     img_move.ontouchend=function(){
+     top=parseInt(img_move.style.top);//获得上一次滑动结束后的图片坐标
+     left=parseInt(img_move.style.left);    
+     }
+    }
 
     // 点击确认上传,截图之后跳转到分享页,把截图上传到到分享页
     $('.up-btnsc').click(function () {
@@ -205,20 +230,17 @@ $(function () {
             });
             return false;
         }
-        html2canvas(document.querySelector(".active1"), {
-            // 解决图片跨域
-            useCORS: true,
+        
+
+        html2canvas(document.querySelector(".up-kuangb"), {
         }).then(canvas => {
-            $('.share').show()
-            $('.share-img').append(canvas)
-            $('.uploading').hide()
+            var url = canvas.toDataURL("image/png");
+            $('.share').show();
+            $('.shareimg').prop('src', url);
+            $('.save').prop('src', url);
+            $('.uploading').hide();
         });
         // 第二次截图添加长按保存
-        html2canvas(document.querySelector(".active1"), {
-        }).then(canvas => {
-            $('.save').append(canvas)
-
-        });
 
     })
 
@@ -250,3 +272,29 @@ $(function () {
 
 
 })
+
+  //把网络图片转换成 64
+  function getBase64(imgUrl, img) {
+    window.URL = window.URL || window.webkitURL;
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", imgUrl, true);
+    // 至关重要
+    xhr.responseType = "blob";
+    xhr.onload = function () {
+        if (this.status == 200) {
+            //得到一个blob对象
+            var blob = this.response;
+            //  至关重要
+            let oFileReader = new FileReader();
+            oFileReader.onloadend = function (e) {
+                let base64 = e.target.result;
+                
+            };
+            oFileReader.readAsDataURL(blob);
+  
+
+            img.attr('src', window.URL.createObjectURL(blob));
+        }
+    }
+    xhr.send();
+}
