@@ -45,7 +45,7 @@ $(function () {
     //     'img/p2-star3.png',
     //     'img/p2-star4.png',
     //     'img/p2-star5.png',
-    //     'img/p2-upload-show.png',
+    //     'img/p2-upload-fadeIn.png',
     //     'img/p2-upload.png',
     //     'img/photo-album.png',
     //     'img/rule-btn.png',
@@ -145,22 +145,23 @@ $(function () {
     // });
     // 点击首页第一个按钮进入海报页
     $('.homt-btn1').click(function () {
-        $('.home').hide()
-        $('.poster').show()
+        $('.home').fadeOut()
+        $('.poster').fadeIn()
+        
     })
     // 点击×号隐藏海报弹层
     $('.poster-layer-bt').click(function () {
-        $('.poster-layer').hide()
+        $('.poster-layer').fadeOut()
     })
     // 点击生成海报按钮显示上传图片页面
     $('.poster-btn').click(function () {
-        $('.uploading').show()
-        $('.poster').hide()
+        $('.uploading').fadeIn()
+        $('.poster').fadeOut()
     })
     // 点击返回返回到首页
     $('.poster-fanhui').click(function () {
-        $('.home').show()
-        $('.poster').hide()
+        $('.home').fadeIn()
+        $('.poster').fadeOut()
     })
     // 点击对应的数字选择相应的文字格式
     $('.up-ul>li').click(function () {
@@ -242,10 +243,10 @@ $(function () {
         html2canvas(document.querySelector(".up-kuangb"), {
         }).then(canvas => {
             var url = canvas.toDataURL("image/png");
-            $('.share').show();
+            $('.share').fadeIn();
             $('.shareimg').prop('src', url);
             $('.save').prop('src', url);
-            $('.uploading').hide();
+            $('.uploading').fadeOut();
         });
         // 第二次截图添加长按保存
 
@@ -253,8 +254,8 @@ $(function () {
 
     // 点击排行榜按钮进入排行榜
     $('.share-ph').click(function () {
-        $('.row').show()
-        $('.share').hide()
+        $('.row').fadeIn()
+        $('.share').fadeOut()
     })
     // 排行榜爱心排他
     $('.love').click(function () {
@@ -269,12 +270,12 @@ $(function () {
     })
     // 点击×号关闭排行榜
     $('.rowcha').click(function () {
-        $('.row-layer').hide()
+        $('.row-layer').fadeOut()
     })
     // 点击返回到分享页
     $('.row-fh').click(function () {
-        $('.share').show()
-        $('.row').hide()
+        $('.share').fadeIn()
+        $('.row').fadeOut()
     })
 
 
