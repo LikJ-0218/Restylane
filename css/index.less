@@ -344,6 +344,7 @@ html {
         left: 3px;
         overflow: hidden;
         display: none;
+
         &.active1 {
           display: block
         }
@@ -772,7 +773,6 @@ html {
     position: absolute;
     left: 0;
     top: 0;
-    overflow: hidden;
 
     .labels {
       width: 339px;
@@ -846,7 +846,181 @@ html {
       }
     }
   }
+
+  .lable-layer {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .lable-layer-img {
+      width: 497px;
+      height: 334px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+
+      img {
+        top: 0;
+        left: 0;
+      }
+
+      .lable-layer-btx {
+        width: 56px;
+        height: 56px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .lable-layer-btc {
+        width: 126px;
+        height: 43px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -63px;
+      }
+    }
+  }
 }
+
+// 人物页开始
+.figure {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+
+  .figure-bg {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .figure-star {
+    top: 30px;
+    left: 26px;
+  }
+
+  .figure-fx {
+    width: 93px;
+    height: 78px;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+
+    >img {
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .figure-pf {
+    width: 592px;
+    height: 856px;
+    position: absolute;
+    top: 160px;
+    left: 50%;
+    margin-left: -296px;
+    >img {
+      left: 0;
+      top: 0;
+      display: none;
+    }
+  }
+
+  .oa-bt,
+  .nearby-bt {
+    width: 560px;
+    height: 57px;
+    position: absolute;
+    top: 1052px;
+    left: 50%;
+    margin-left: -280px;
+
+    >img {
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .nearby-bt {
+    top: 1136px;
+
+  }
+
+}
+
+// 搜索开始
+.search {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+
+  .search-bg {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .search-star {
+    top: 266px;
+    left: 106px;
+  }
+  .search-love{
+    top: 150px;
+    left: 0;
+  }
+  .search-lovex{
+    top: 800px;
+    right: 180px;
+  }
+  .search-loved{
+    top: 900px;
+    right: 68px;
+  }
+  .search-fx {
+    width: 93px;
+    height: 78px;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+
+    >img {
+      top: 0;
+      left: 0;
+    }
+  }
+  #container{
+    width: 462px;
+    height: 462px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 2px solid #0a3877;
+    .anchorBL{
+      display: none;
+    }
+  }
+
+}
+
 
 // 提示信息
 .layui-m-layer-msg .layui-m-layercont {
@@ -894,6 +1068,13 @@ html {
       top: 1100px;
     }
   }
+
+  .lable {
+    .lable-cent {
+      top: -80px;
+    }
+  }
+
 
 }
 

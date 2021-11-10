@@ -147,7 +147,7 @@ $(function () {
     $('.homt-btn1').click(function () {
         $('.home').fadeOut()
         $('.poster').fadeIn()
-        
+
     })
     // 点击×号隐藏海报弹层
     $('.poster-layer-bt').click(function () {
@@ -197,33 +197,33 @@ $(function () {
     })
     // 图片拖拽
     // JS原生获得手机端手机触摸点坐标并移动图片 方法一
-        var img_move = document.getElementsByClassName('upimg');//获得元素DOM
-    for (var n = 0; n <= img_move.length-1; n++){
+    var img_move = document.getElementsByClassName('upimg');//获得元素DOM
+    for (var n = 0; n <= img_move.length - 1; n++) {
         imgMove(img_move[n])
     }
-        function imgMove(img_move) {
-            var Xstart = 0, Ystart = 0, Xmove = 0, Ymove = 0, top = 0, left = 0;    //定义变量
+    function imgMove(img_move) {
+        var Xstart = 0, Ystart = 0, Xmove = 0, Ymove = 0, top = 0, left = 0;    //定义变量
 
-            img_move.ontouchstart = function (e) {
-                var e = e || window.event;
-                Xstart = e.touches[0].clientX;//获得触屏点横坐标
-                Ystart = e.touches[0].clientY;//获得触屏点纵坐标
-                //alert(e.touches.length) 获得当前屏幕上所有手指列表
-            }
-            img_move.ontouchmove = function (e) {
-                var e = e || window.event;
-                e.preventDefault();//阻止页面滑动
-                Xmove = e.changedTouches[0].clientX;//获得滑动时的触点横坐标
-                Ymove = e.changedTouches[0].clientY;//获得滑动时的触点纵坐标
-                img_move.style.top = top + Ymove - Ystart + "px";//对图片的下一次滑动操作时的定位
-                img_move.style.left = left + Xmove - Xstart + "px";
-            }
-            img_move.ontouchend = function () {
-                top = parseInt(img_move.style.top);//获得上一次滑动结束后的图片坐标
-                left = parseInt(img_move.style.left);
-            }
+        img_move.ontouchstart = function (e) {
+            var e = e || window.event;
+            Xstart = e.touches[0].clientX;//获得触屏点横坐标
+            Ystart = e.touches[0].clientY;//获得触屏点纵坐标
+            //alert(e.touches.length) 获得当前屏幕上所有手指列表
         }
-    
+        img_move.ontouchmove = function (e) {
+            var e = e || window.event;
+            e.preventDefault();//阻止页面滑动
+            Xmove = e.changedTouches[0].clientX;//获得滑动时的触点横坐标
+            Ymove = e.changedTouches[0].clientY;//获得滑动时的触点纵坐标
+            img_move.style.top = top + Ymove - Ystart + "px";//对图片的下一次滑动操作时的定位
+            img_move.style.left = left + Xmove - Xstart + "px";
+        }
+        img_move.ontouchend = function () {
+            top = parseInt(img_move.style.top);//获得上一次滑动结束后的图片坐标
+            left = parseInt(img_move.style.left);
+        }
+    }
+
 
 
 
@@ -278,8 +278,35 @@ $(function () {
         $('.row').fadeOut()
     })
 
+    var map = new BMap.Map("container");          // 创建地图实例  
+    var point = new BMap.Point(116.404, 39.915);  // 创建点坐标   
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+    var point = new BMap.Point(116.331398, 39.897445);
+    map.centerAndZoom(point, 12);
+    var geolocation = new BMap.Geolocation();
+    // 开启SDK辅助定位
+    geolocation.enableSDKLocation();
+    geolocation.getCurrentPosition(function (r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+            // alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+        }
+        else {
+            alert('failed' + this.getStatus());
+        }
+    })
+
 
 })
+
+
+
+
+
+
 
 //把网络图片转换成 64
 function getBase64(imgUrl, img) {
