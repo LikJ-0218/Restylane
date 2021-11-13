@@ -278,6 +278,52 @@ $(function () {
         $('.row').fadeOut()
     })
 
+    // 点击首页第二步打开减压撕撕墙
+    $('.homt-btn2').click(function () {
+        $('.lable').fadeIn()
+        $('.home').fadeOut()
+    })
+
+    // 点击弹层消失
+    $('.lable-layer-btx,.lable-layer-btc').click(function () {
+        $('.lable-layer').fadeOut()
+    })
+
+    // 点击添加类名撕掉标签
+    $('.labels').click(function () {
+        $(this).addClass('active')
+    })
+
+    // 点击确定打开人物页
+    $('.label-btn').click(function () {
+        $('.figure').fadeIn()
+        $('.lable').fadeOut()
+        // 生成一个随机出 随机出现一个人物
+        var num = Math.floor(Math.random()*6)
+        $('.figure-pf>img').eq(num).show()
+
+
+    })
+    // 点击人物页返回按钮  返回上一页
+    $('.figure-fx').click(function () {
+        $('.lable').fadeIn()
+        $('.figure').fadeOut()
+    })
+
+    // 点击按钮打开附近机构 搜索页
+    $('.nearby-bt').click(function () {
+        $('.search').fadeIn()
+        $('.figure').fadeOut()
+    })
+
+    // 点击搜索页返回按钮  返回上一页
+    $('.search-fx').click(function () {
+        $('.figure').fadeIn()
+        $('.search').fadeOut()
+    })
+
+
+    /* 地图 */
     var map = new BMap.Map("container");          // 创建地图实例  
     var point = new BMap.Point(116.404, 39.915);  // 创建点坐标   
     map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
